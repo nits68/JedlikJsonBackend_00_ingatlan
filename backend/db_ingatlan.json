@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "kategoriaId": 1,
+    "leiras": "Kertvárosi részén, egyszintes házat kínálunk nyugodt környezetben, nagy telken.",
+    "hirdetesDatuma": "2024.10.25",
+    "tehermentes": true,
+    "kepUrl": "https://nits68.github.io/static/ingatlan/ingatlan01.jpg"
+  },
+  {
+    "id": 2,
+    "kategoriaId": 1,
+    "leiras": "Belvárosi környezetben, árnyékos helyen kis méretú családi ház eladó. Tömegközlekedéssel könnyen megközelíthető.",
+    "hirdetesDatuma": "2024.11.01",
+    "tehermentes": true,
+    "kepUrl": "https://nits68.github.io/static/ingatlan/ingatlan02.jpg"
+  },
+  {
+    "id": 3,
+    "kategoriaId": 2,
+    "leiras": "Kétszintes berendezett lakás a belvárosban kiadó.",
+    "hirdetesDatuma": "2024.10.28",
+    "tehermentes": true,
+    "kepUrl": "https://nits68.github.io/static/ingatlan/ingatlan03.jpg"
+  },
+  {
+    "id": 4,
+    "kategoriaId": 4,
+    "leiras": "Nagy garázs kertvárosi környezetben kiadó",
+    "hirdetesDatuma": "2024.10.30",
+    "tehermentes": true,
+    "kepUrl": "https://nits68.github.io/static/ingatlan/ingatlan04.jpg"
+  },
+  {
+    "id": 5,
+    "kategoriaId": 5,
+    "leiras": "10 hektáros mezőhazdasági terület eladó",
+    "hirdetesDatuma": "2024.11.03",
+    "tehermentes": true,
+    "kepUrl": "https://nits68.github.io/static/ingatlan/ingatlan05.jpg"
+  },
+  {
+    "id": 6,
+    "kategoriaId": 6,
+    "leiras": "Felújításra szoruló üzemcsarnok zöld környezetben áron alul eladó",
+    "hirdetesDatuma": "2024.10.27",
+    "tehermentes": false,
+    "kepUrl": "https://nits68.github.io/static/ingatlan/ingatlan06.jpg"
+  }
+]
