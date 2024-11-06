@@ -1,0 +1,110 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.1",
+    "title": "Jedlik REST API Server for Á.L.B. Ingatlan",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": ""
+    }
+  ],
+  "tags": [
+    {
+      "name": "",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/api/ingatlan": {
+      "get": {
+        "tags": [
+          "Ingatlan"
+        ],
+        "summary": "Az összes ingatlan lekérdezés",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/kategoriak": {
+      "get": {
+        "tags": [
+          "Kategóriák"
+        ],
+        "summary": "Ingatlan kategóriák lekérdezése",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/api/ujingatlan": {
+      "post": {
+        "tags": [
+          "Ingatlan"
+        ],
+        "summary": "Új ingatlan hozzáadása",
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "kategoriaId": {
+                    "type": "number"
+                  },
+                  "leiras": {
+                    "type": "string"
+                  },
+                  "hirdetesDatuma": {
+                    "type": "string"
+                  },
+                  "tehermentes": {
+                    "type": "boolean"
+                  },
+                  "kepUrl": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "kategoriaId": 1,
+                  "leiras": "Új építésű ház eladó a Duna partján",
+                  "hirdetesDatuma": "2024-11-06T20:07:26.499Z",
+                  "tehermentes": true,
+                  "kepUrl": "https://nits68.github.io/static/ingatlan/ingatlan07.jpg"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

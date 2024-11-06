@@ -2,12 +2,18 @@
 import cors from "cors";
 import { promises as fs } from "fs";
 import morgan from "morgan";
+import swaggerUi, { SwaggerUiOptions } from "swagger-ui-express";
+import swaggerDocument from "../backend/swagger-output.json";
 
 const app = express();
 const PORT = 3000;
 
 // Middleware to parse request body
 app.use(express.json());
+
+// Add Swagger UI to the app
+const options: SwaggerUiOptions = { swaggerOptions: { tryItOutEnabled: true } };
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
 
 // Enabled CORS (Cross-Origin Resource Sharing):
 app.use(cors());
@@ -16,6 +22,8 @@ app.use(cors());
 app.use(morgan("dev"));
 
 app.get("/api/ingatlan", async (req: Request, res: Response) => {
+    // #swagger.tags = ['Ingatlan']
+    // #swagger.summary = 'Az összes ingatlan lekérdezés'
     const ingatlanok = await readDataFromFile("ingatlan");
     const kategoriak = await readDataFromFile("kategoriak");
     if (ingatlanok && kategoriak) {
@@ -30,6 +38,8 @@ app.get("/api/ingatlan", async (req: Request, res: Response) => {
 });
 
 app.get("/api/kategoriak", async (req: Request, res: Response) => {
+    // #swagger.tags = ['Kategóriák']
+    // #swagger.summary = 'Ingatlan kategóriák lekérdezése'
     try {
         const data = await readDataFromFile("kategoriak");
         if (data) {
@@ -43,6 +53,33 @@ app.get("/api/kategoriak", async (req: Request, res: Response) => {
 });
 
 app.post("/api/ujingatlan", async (req: Request, res: Response) => {
+    // #swagger.tags = ['Ingatlan']
+    // #swagger.summary = 'Új ingatlan hozzáadása'
+    /* #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        type: "object",
+                        properties: {
+                            kategoriaId: { type: "number" },
+                            leiras: { type: "string" },
+                            hirdetesDatuma: { type: "string" },
+                            tehermentes: { type: "boolean" },
+                            kepUrl: { type: "string" }
+                        },
+                        example: {
+                            kategoriaId: 1,
+                            leiras: "Új építésű ház eladó a Duna partján",
+                            hirdetesDatuma: "2024-11-06T20:07:26.499Z",
+                            tehermentes: true,
+                            kepUrl: "https://nits68.github.io/static/ingatlan/ingatlan07.jpg"
+                        }
+                    }  
+                }
+            }
+        } 
+    */
     try {
         const data = await readDataFromFile("ingatlan");
         if (data) {
@@ -98,7 +135,7 @@ app.post("/api/ujingatlan", async (req: Request, res: Response) => {
 // });
 
 app.listen(PORT, () => {
-    console.log(`Jedlik Json-Backend-Server listening on port ${PORT}`);
+    console.log(`Jedlik Json-Backend-Server Swagger: http://localhost:${PORT}/docs`);
 });
 
 // Utility functions to read/write data from/to file
