@@ -88,11 +88,7 @@ app.post("/api/ujingatlan", async (req, res) => {
         if (data) {
             const id = data.length + 1;
             const ujIngatlan = { id: id, ...req.body };
-            if (Object.keys(ujIngatlan).length != 6 ||
-                !ujIngatlan.kategoriaId ||
-                !ujIngatlan.leiras ||
-                !ujIngatlan.hirdetesDatuma ||
-                !ujIngatlan.tehermentes || !ujIngatlan.kepUrl) {
+            if (Object.keys(ujIngatlan).length != 6 || !ujIngatlan.kategoriaId || !ujIngatlan.leiras || !ujIngatlan.hirdetesDatuma || !ujIngatlan.tehermentes || !ujIngatlan.kepUrl) {
                 throw new Error("Validation failed: A kérés mezői nem megfelelők.");
             }
             data.push(ujIngatlan);
@@ -153,7 +149,7 @@ async function readDataFromFile(table) {
         return JSON.parse(data);
     }
     catch (error) {
-        return [];
+        return [error.message];
     }
 }
 async function saveDataToFile(table, data) {
