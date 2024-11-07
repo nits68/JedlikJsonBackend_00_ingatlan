@@ -7,7 +7,7 @@
     "repository": {
         "private": false,
         "type": "git",
-        "url": "https://github.com/nits68/JedlikJsonBackend.git"
+        "url": "https://github.com/nits68/JedlikJsonBackend_00_ingatlan"
     },
     "scripts": {
         "start": "node ./backend/backend.js",

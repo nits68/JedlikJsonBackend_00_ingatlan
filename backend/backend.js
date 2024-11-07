@@ -21,17 +21,22 @@ app.use((0, morgan_1.default)("dev"));
 app.get("/api/ingatlan", async (req, res) => {
     // #swagger.tags = ['Ingatlan']
     // #swagger.summary = 'Az összes ingatlan lekérdezés'
-    const ingatlanok = await readDataFromFile("ingatlan");
-    const kategoriak = await readDataFromFile("kategoriak");
-    if (ingatlanok && kategoriak) {
-        const data = ingatlanok.map((ingatlan) => {
-            const kategoria = kategoriak.find((kategoria) => kategoria.id === ingatlan.kategoriaId);
-            return { ...ingatlan, kategoriaNev: kategoria.megnevezes };
-        });
-        res.send(data.sort((a, b) => a.id - b.id));
+    try {
+        const ingatlanok = await readDataFromFile("ingatlan");
+        const kategoriak = await readDataFromFile("kategoriak");
+        if (ingatlanok && kategoriak) {
+            const data = ingatlanok.map((ingatlan) => {
+                const kategoria = kategoriak.find((kategoria) => kategoria.id === ingatlan.kategoriaId);
+                return { ...ingatlan, kategoriaNev: kategoria.megnevezes };
+            });
+            res.send(data.sort((a, b) => a.id - b.id));
+        }
+        else {
+            res.status(404).send({ message: "Error while reading data." });
+        }
     }
-    else {
-        res.status(404).send({ message: "Error while reading data." });
+    catch (error) {
+        res.status(400).send({ message: error.message });
     }
 });
 app.get("/api/kategoriak", async (req, res) => {
@@ -83,6 +88,13 @@ app.post("/api/ujingatlan", async (req, res) => {
         if (data) {
             const id = data.length + 1;
             const ujIngatlan = { id: id, ...req.body };
+            if (Object.keys(ujIngatlan).length != 6 ||
+                !ujIngatlan.kategoriaId ||
+                !ujIngatlan.leiras ||
+                !ujIngatlan.hirdetesDatuma ||
+                !ujIngatlan.tehermentes || !ujIngatlan.kepUrl) {
+                throw new Error("Validation failed: A kérés mezői nem megfelelők.");
+            }
             data.push(ujIngatlan);
             const response = await saveDataToFile("ingatlan", data);
             if (response == "OK") {
@@ -141,7 +153,6 @@ async function readDataFromFile(table) {
         return JSON.parse(data);
     }
     catch (error) {
-        console.error(error);
         return [];
     }
 }
