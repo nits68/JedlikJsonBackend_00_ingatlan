@@ -37,9 +37,8 @@ app.get("/api/ingatlan", async (req: Request, res: Response) => {
             res.status(404).send({ message: "Error while reading data." });
         }
     } catch (error) {
-        res.status(400).send({ message: error.message });        
+        res.status(400).send({ message: error.message });
     }
-    
 });
 
 app.get("/api/kategoriak", async (req: Request, res: Response) => {
@@ -90,11 +89,7 @@ app.post("/api/ujingatlan", async (req: Request, res: Response) => {
         if (data) {
             const id: number = data.length + 1;
             const ujIngatlan: any = { id: id, ...req.body };
-            if (Object.keys(ujIngatlan).length != 6 ||
-                    !ujIngatlan.kategoriaId || 
-                    !ujIngatlan.leiras || 
-                    !ujIngatlan.hirdetesDatuma || 
-                    !ujIngatlan.tehermentes || !ujIngatlan.kepUrl) {
+            if (Object.keys(ujIngatlan).length != 6 || !ujIngatlan.kategoriaId || !ujIngatlan.leiras || !ujIngatlan.hirdetesDatuma || !ujIngatlan.tehermentes || !ujIngatlan.kepUrl) {
                 throw new Error("Validation failed: A kérés mezői nem megfelelők.");
             }
             data.push(ujIngatlan);
@@ -156,7 +151,7 @@ async function readDataFromFile(table: string): Promise<any[]> {
         const data = await fs.readFile(`db_${table}.json`, "utf8");
         return JSON.parse(data);
     } catch (error) {
-        return [];
+        return [error.message];
     }
 }
 
