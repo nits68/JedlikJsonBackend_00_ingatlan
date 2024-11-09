@@ -87,10 +87,10 @@ app.post("/api/ujingatlan", async (req: Request, res: Response) => {
     try {
         const data = await readDataFromFile("ingatlan");
         if (data) {
-            const id: number = data.length + 1;
-            const ujIngatlan: any = { id: id, ...req.body };
+            const newId: number = Math.max(...data.map(e => e.id)) + 1;
+            const ujIngatlan: any = { id: newId, ...req.body };
             if (Object.keys(ujIngatlan).length != 6 || !ujIngatlan.kategoriaId || !ujIngatlan.leiras || !ujIngatlan.hirdetesDatuma || !ujIngatlan.tehermentes || !ujIngatlan.kepUrl) {
-                throw new Error("Validation failed: A kérés mezői nem megfelelők.");
+                throw new Error("Validation failed: A kérés mezői nem megfelelők, vagy nem tartalmaznak értéket");
             }
             data.push(ujIngatlan);
             const response = await saveDataToFile("ingatlan", data);
