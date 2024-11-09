@@ -34,7 +34,7 @@ app.get("/api/ingatlan", async (req: Request, res: Response) => {
             });
             res.send(data.sort((a: any, b: any) => a.id - b.id));
         } else {
-            res.status(404).send({ message: "Error while reading data." });
+            res.status(404).send({ message: "Hiba az adatok olvasásakor!" });
         }
     } catch (error) {
         res.status(400).send({ message: error.message });
@@ -49,7 +49,7 @@ app.get("/api/kategoriak", async (req: Request, res: Response) => {
         if (data) {
             res.send(data.sort((a: any, b: any) => a.id - b.id));
         } else {
-            res.status(404).send({ message: "Error while reading data." });
+            res.status(404).send({ message: "Hiba az adatok olvasásakor!" });
         }
     } catch (error) {
         res.status(400).send({ message: error.message });
@@ -90,7 +90,7 @@ app.post("/api/ujingatlan", async (req: Request, res: Response) => {
             const newId: number = Math.max(...data.map(e => e.id)) + 1;
             const ujIngatlan: any = { id: newId, ...req.body };
             if (Object.keys(ujIngatlan).length != 6 || !ujIngatlan.kategoriaId || !ujIngatlan.leiras || !ujIngatlan.hirdetesDatuma || !ujIngatlan.tehermentes || !ujIngatlan.kepUrl) {
-                throw new Error("Validation failed: A kérés mezői nem megfelelők, vagy nem tartalmaznak értéket");
+                throw new Error("A kérés mezői nem megfelelők, vagy nem tartalmaznak értéket");
             }
             data.push(ujIngatlan);
             const response = await saveDataToFile("ingatlan", data);
