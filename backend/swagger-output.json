@@ -27,13 +27,157 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Sikeres lekérdezés",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "kategoriaId": {
+                        "type": "number",
+                        "example": 2
+                      },
+                      "leiras": {
+                        "type": "string",
+                        "example": "Új építésű ház a Balaton partján"
+                      },
+                      "hirdetesDatuma": {
+                        "type": "string",
+                        "example": "2024-11-06T20:07:26.499Z"
+                      },
+                      "tehermentes": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "kepUrl": {
+                        "type": "string",
+                        "example": "https://example.com/kep.jpg"
+                      },
+                      "kategoriaNev": {
+                        "type": "string",
+                        "example": "Családi ház"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "kategoriaId": {
+                        "type": "number",
+                        "example": 2
+                      },
+                      "leiras": {
+                        "type": "string",
+                        "example": "Új építésű ház a Balaton partján"
+                      },
+                      "hirdetesDatuma": {
+                        "type": "string",
+                        "example": "2024-11-06T20:07:26.499Z"
+                      },
+                      "tehermentes": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "kepUrl": {
+                        "type": "string",
+                        "example": "https://example.com/kep.jpg"
+                      },
+                      "kategoriaNev": {
+                        "type": "string",
+                        "example": "Családi ház"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Hibás kérés",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Valamilyen hiba történt a kérés feldolgozása közben"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Valamilyen hiba történt a kérés feldolgozása közben"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Hiba az adatok olvasásakor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Hiba az adatok olvasásakor!"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Hiba az adatok olvasásakor!"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -47,13 +191,117 @@
         "description": "",
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Sikeres lekérdezés",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "megnevezes": {
+                        "type": "string",
+                        "example": "Családi ház"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "megnevezes": {
+                        "type": "string",
+                        "example": "Családi ház"
+                      }
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Hibás kérés",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Valamilyen hiba történt a kérés feldolgozása közben"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Valamilyen hiba történt a kérés feldolgozása közben"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           },
           "404": {
-            "description": "Not Found"
+            "description": "Hiba az adatok olvasásakor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Hiba az adatok olvasásakor!"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Hiba az adatok olvasásakor!"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -67,10 +315,176 @@
         "description": "",
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Új ingatlan sikeresen létrehozva",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 10
+                    },
+                    "kategoriaId": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "leiras": {
+                      "type": "string",
+                      "example": "Új építésű ház eladó a Duna partján"
+                    },
+                    "hirdetesDatuma": {
+                      "type": "string",
+                      "example": "2024-11-06T20:07:26.499Z"
+                    },
+                    "tehermentes": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "kepUrl": {
+                      "type": "string",
+                      "example": "https://nits68.github.io/static/ingatlan/ingatlan07.jpg"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "example": 10
+                    },
+                    "kategoriaId": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "leiras": {
+                      "type": "string",
+                      "example": "Új építésű ház eladó a Duna partján"
+                    },
+                    "hirdetesDatuma": {
+                      "type": "string",
+                      "example": "2024-11-06T20:07:26.499Z"
+                    },
+                    "tehermentes": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "kepUrl": {
+                      "type": "string",
+                      "example": "https://nits68.github.io/static/ingatlan/ingatlan07.jpg"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Hiányzó vagy érvénytelen mezők",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "A kérés mezői nem megfelelők, vagy nem tartalmaznak értéket!"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "A kérés mezői nem megfelelők, vagy nem tartalmaznak értéket!"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Ütközés (pl. duplikált adat, hibás dátum vagy rövid leírás)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Már létezik ilyen kép URL!"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Már létezik ilyen kép URL!"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Szerver hiba",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Belső szerverhiba történt"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Belső szerverhiba történt"
+                    }
+                  },
+                  "xml": {
+                    "name": "main"
+                  }
+                }
+              }
+            }
           }
         },
         "requestBody": {
