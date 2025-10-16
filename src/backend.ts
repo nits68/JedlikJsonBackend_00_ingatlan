@@ -140,7 +140,7 @@ app.post("/api/ujingatlan", async (req: Request, res: Response) => {
         if (data) {
             const newId: number = Math.max(...data.map(e => e.id)) + 1;
             const ujIngatlan: any = { id: newId, ...req.body };
-            if (Object.keys(ujIngatlan).length != 6 || !ujIngatlan.kategoriaId || !ujIngatlan.leiras || !ujIngatlan.hirdetesDatuma || !ujIngatlan.tehermentes || !ujIngatlan.kepUrl) {
+            if (Object.keys(ujIngatlan).length != 6 || !ujIngatlan.kategoriaId || !ujIngatlan.leiras || !ujIngatlan.hirdetesDatuma || !ujIngatlan.kepUrl || typeof ujIngatlan.tehermentes !== "boolean") {
                 const err: Error = new Error("A kérés mezői nem megfelelők, vagy nem tartalmaznak értéket!");
                 (err as any).status = 400;
                 throw err;
